@@ -6,6 +6,7 @@
 
 ### 下载模板和上传导入数据
 #### 下载模板（基于文件模板）
+该示例将导出原本的模板文件，若要填充字典等数据，请参考 **导出数据到 xlsx 中（填充数据到多个sheet）**
 ```
 @ExcelResponse(
         fileName = "XXX导入模板",
@@ -32,6 +33,7 @@ public void downloadTemplate() {
 @GetMapping("/downloadTemplate")
 public void downloadTemplate() {
     ExcelHandleHelper.registerWriteHandler(
+            new LongestMatchColumnWidthStyleStrategy(),
             new DictOptionWriteHandler(),
             new DateFormatStyleWriteHandler(),
             new TitleStatStyleWriteHandler());
